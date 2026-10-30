@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistemin — Sistem gudang &amp; produksi untuk konveksi</title>
-<meta name="description" content="Sistemin membuatkan sistem berbasis web untuk stok, produksi, penjualan, dan gaji konveksi serta distributor fashion. Cek bocor operasional gratis 30 menit.">
+<meta name="description" content="Sistemin membuatkan sistem berbasis web untuk stok, produksi, penjualan, dan gaji konveksi, brand fashion, serta distributor. Cek bocor operasional gratis 30 menit.">
 <meta name="theme-color" content="#15201C">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
@@ -121,6 +121,44 @@ footer{background:var(--ink);color:var(--faint-dark);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:28px;padding-bottom:28px}
 footer a{color:var(--muted-dark)}
 
+/* untuk siapa */
+.who{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.who .card h3{display:flex;align-items:center;gap:10px}
+.who ul{margin:10px 0 0;padding-left:20px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.other{margin-top:20px;background:#fff;border:1px dashed #8A9893;border-radius:10px;padding:18px 22px;color:var(--muted);font-size:16px}
+.other b{color:var(--ink)}
+
+/* contoh sistem */
+.ex{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.ex-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.screen{background:#E6EBE9;padding:16px;border-bottom:1px solid var(--line)}
+.win{background:#fff;border-radius:8px;border:1px solid #CBD3D0;overflow:hidden;font-size:12px}
+.win-bar{display:flex;align-items:center;gap:6px;padding:7px 10px;background:var(--ink);color:#DCE3E0;font-weight:600;font-size:12px}
+.win-bar i{width:8px;height:8px;border-radius:50%;background:#4A5853;display:inline-block}
+.win-bar span{margin-left:6px}
+.win-body{padding:10px;display:flex;flex-direction:column;gap:8px}
+.mrow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 8px;border:1px solid #E1E6E4;border-radius:6px}
+.mrow small{color:var(--muted)}
+.badge{font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.ok{background:#DCF2E5;color:#14532D}
+.warn{background:#FDECC8;color:#713F12}
+.bad{background:#FADFD3;color:#8A2E0B}
+.bar{height:6px;border-radius:3px;background:#E1E6E4;overflow:hidden;margin-top:4px}
+.bar b{display:block;height:100%;background:var(--accent)}
+.stage{display:grid;grid-template-columns:70px 1fr 34px;align-items:center;gap:8px}
+.minikpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.minikpi div{border:1px solid #E1E6E4;border-radius:6px;padding:6px}
+.minikpi small{display:block;color:var(--muted);font-size:10.5px}
+.minikpi b{font-family:'Archivo',sans-serif;font-size:15px}
+.chat{background:#E7F6E9;border-radius:8px 8px 8px 2px;padding:6px 8px;max-width:85%;color:#1F2A26}
+.arrow-down{text-align:center;color:var(--accent);font-weight:700;line-height:1}
+.ex-copy{padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px}
+.ex-copy .tag{color:var(--accent-text);margin:0}
+.ex-copy h3{margin:0;font-family:'Archivo',sans-serif;font-size:21px;letter-spacing:-.3px}
+.ex-copy p{margin:0;color:var(--muted)}
+.ex-copy ul{margin:0;padding-left:20px;color:var(--muted);display:flex;flex-direction:column;gap:4px;font-size:15px}
+.status{font-size:13px;color:var(--muted);border-top:1px solid #E1E6E4;padding-top:10px;margin-top:4px}
+
 /* floating WA (mobile) */
 .wa-float{display:none}
 @media (max-width:760px){
@@ -144,6 +182,7 @@ footer a{color:var(--muted-dark)}
 Sistemin</a>
 <nav aria-label="Menu utama">
 <a class="link" href="#modul">Modul</a>
+<a class="link" href="#contoh">Contoh</a>
 <a class="link" href="#cara">Cara kerja</a>
 <a class="link" href="#paket">Paket</a>
 <a class="link" href="#tentang">Tentang</a>
@@ -155,7 +194,7 @@ Sistemin</a>
 <div class="hero">
 <div class="wrap">
 <div class="hero-copy">
-<p class="eyebrow">Untuk konveksi &amp; distributor fashion</p>
+<p class="eyebrow">Untuk konveksi, brand fashion &amp; distributor</p>
 <h1 class="display">Dari buku tulis ke dashboard, tanpa ganti cara kerja tim Anda.</h1>
 <p class="sub">Saya praktisi gudang dan produksi yang membuatkan sistem berbasis web untuk stok, produksi, penjualan, dan gaji. Tim cukup input dari HP, Anda pantau semuanya dari satu layar.</p>
 <div class="ctas">
@@ -200,6 +239,31 @@ Sistemin</a>
 </div>
 </section>
 
+<section id="untuk" aria-labelledby="h-untuk" style="padding-top:24px">
+<div class="wrap">
+<p class="eyebrow">Untuk siapa</p>
+<h2 id="h-untuk" class="display">Usaha fashion yang barangnya sudah banyak, tapi catatannya masih manual.</h2>
+<div class="who" style="margin-top:32px">
+<div class="card">
+<h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg>Konveksi &amp; pabrik</h3>
+<p>Produksi sendiri atau lewat CMT, dari bahan sampai barang jadi.</p>
+<ul><li>Kebutuhan bahan per PO</li><li>Progres potong, jahit, QC</li><li>Setoran dan reject CMT</li></ul>
+</div>
+<div class="card">
+<h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>Brand fashion &amp; online shop</h3>
+<p>Punya produk sendiri, jualan ke banyak saluran dan tipe pembeli.</p>
+<ul><li>Stok gudang dan barang keluar</li><li>Harga retail, reseller, komunitas</li><li>Laporan penjualan dan laba kotor</li></ul>
+</div>
+<div class="card">
+<h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Agen &amp; distributor</h3>
+<p>Menerima pesanan reseller lewat WhatsApp, PO per koleksi.</p>
+<ul><li>Chat jadi pesanan</li><li>Rekap per PO dan per reseller</li><li>Tagihan dan status kirim</li></ul>
+</div>
+</div>
+<p class="other"><b>Usaha lain yang punya stok dan gudang?</b> Misalnya makanan, sparepart, atau toko. Tetap bisa, chat dulu dan kita lihat alurnya bersama.</p>
+</div>
+</section>
+
 <section id="modul" aria-labelledby="h-modul" style="padding-top:24px">
 <div class="wrap">
 <p class="eyebrow">Modul siap pakai</p>
@@ -218,6 +282,82 @@ Sistemin</a>
 <div class="mod">
 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F6A272" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
 <h3>Absensi &amp; gaji freelance</h3><p>Absen, hasil borongan, dan slip gaji mingguan dihitung otomatis.</p></div>
+</div>
+</div>
+</section>
+
+<section id="contoh" aria-labelledby="h-contoh" style="padding-top:24px">
+<div class="wrap">
+<p class="eyebrow">Contoh sistem yang sudah saya bangun</p>
+<h2 id="h-contoh" class="display">Dipakai di usaha nyata, bukan sekadar desain.</h2>
+<p class="lead">Nama usaha sengaja tidak ditampilkan karena sistemnya masih dalam uji coba bersama klien. Tampilan di bawah adalah ilustrasi dengan data contoh.</p>
+<div class="ex">
+
+<article class="ex-card">
+<div class="screen" aria-hidden="true">
+<div class="win">
+<div class="win-bar"><i></i><i></i><i></i><span>Produksi · PO-0328</span></div>
+<div class="win-body">
+<div class="mrow"><div><b>Tas kerja · 400 pcs</b><br><small>Kebutuhan bahan</small></div><span class="badge warn">1 bahan kurang</span></div>
+<div class="stage"><small>Potong</small><div class="bar"><b style="width:100%"></b></div><small>100%</small></div>
+<div class="stage"><small>Preparing</small><div class="bar"><b style="width:80%"></b></div><small>80%</small></div>
+<div class="stage"><small>Jahit</small><div class="bar"><b style="width:55%"></b></div><small>55%</small></div>
+<div class="stage"><small>QC</small><div class="bar"><b style="width:30%"></b></div><small>30%</small></div>
+<div class="mrow"><small>Reject diperbaiki 5 · dibuang 2</small><span class="badge bad">Cek QC</span></div>
+</div>
+</div>
+</div>
+<div class="ex-copy">
+<p class="tag">PABRIK TAS</p>
+<h3>Sistem produksi dari bahan sampai kirim</h3>
+<p>Owner melihat progres tiap PO tanpa harus tanya ke lantai produksi.</p>
+<ul><li>Kebutuhan dan stok bahan per PO</li><li>SPK, progres per bagian, input leader dari HP</li><li>QC reject diperbaiki atau dibuang, retur buyer</li></ul>
+<p class="status">Status: uji coba bersama klien</p>
+</div>
+</article>
+
+<article class="ex-card">
+<div class="screen" aria-hidden="true">
+<div class="win">
+<div class="win-bar"><i></i><i></i><i></i><span>Gudang &amp; penjualan</span></div>
+<div class="win-body">
+<div class="minikpi"><div><small>Stok siap jual</small><b>1.284</b></div><div><small>Keluar hari ini</small><b>46</b></div><div><small>Stok menipis</small><b style="color:#C2410C">7</b></div></div>
+<div class="mrow"><div><b>Legging · Hitam · M</b><br><small>Retail · Reseller · Komunitas</small></div><span class="badge ok">32 pcs</span></div>
+<div class="mrow"><div><b>Sports bra · Navy · S</b><br><small>Keluar: sponsor event</small></div><span class="badge warn">4 pcs</span></div>
+<div class="mrow"><small>Scan barcode atau input manual</small><span class="badge ok">Siap</span></div>
+</div>
+</div>
+</div>
+<div class="ex-copy">
+<p class="tag">BRAND ACTIVEWEAR</p>
+<h3>Sistem penjualan &amp; gudang</h3>
+<p>Stok berkurang otomatis saat barang keluar, harga ikut tipe pembeli.</p>
+<ul><li>Barang masuk, keluar, dan stok real-time</li><li>Harga bertingkat: retail, reseller, komunitas</li><li>Barang keluar non-penjualan: sampel, sponsor</li></ul>
+<p class="status">Status: uji coba bersama klien</p>
+</div>
+</article>
+
+<article class="ex-card">
+<div class="screen" aria-hidden="true">
+<div class="win">
+<div class="win-bar"><i></i><i></i><i></i><span>Rekap pesanan · PO Lebaran</span></div>
+<div class="win-body">
+<div class="chat">Kak, gamis A warna sage L 2, M 1 ya</div>
+<div class="arrow-down">↓</div>
+<div class="mrow"><div><b>Reseller Bu Rina</b><br><small>Gamis A · Sage · L ×2, M ×1</small></div><span class="badge ok">Masuk rekap</span></div>
+<div class="mrow"><div><b>Total PO</b><br><small>18 reseller · 64 pcs</small></div><span class="badge warn">3 belum bayar</span></div>
+</div>
+</div>
+</div>
+<div class="ex-copy">
+<p class="tag">AGEN &amp; DISTRIBUTOR FASHION</p>
+<h3>Rekap pesanan dari chat WhatsApp</h3>
+<p>Pesanan reseller tidak lagi direkap manual sampai larut malam.</p>
+<ul><li>Chat WA diubah jadi pesanan</li><li>Rekap otomatis per PO dan per reseller</li><li>Invoice dan status pembayaran</li></ul>
+<p class="status">Status: uji coba bersama pengguna awal</p>
+</div>
+</article>
+
 </div>
 </div>
 </section>
@@ -296,7 +436,7 @@ Chat WhatsApp 0822-6161-2299</a>
 
 <footer>
 <div class="wrap">
-<span>© 2026 Sistemin · Sistem operasional untuk konveksi &amp; distributor fashion</span>
+<span>© 2026 Sistemin · Sistem operasional untuk konveksi, brand fashion &amp; distributor</span>
 <span>Bekasi · <a href="https://wa.me/6282261612299" target="_blank" rel="noopener">WA 0822-6161-2299</a></span>
 </div>
 </footer>
