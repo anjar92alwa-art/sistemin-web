@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistemin — Sistem gudang &amp; produksi untuk konveksi</title>
+<meta name="description" content="Sistemin membuatkan sistem berbasis web untuk stok, produksi, penjualan, dan gaji konveksi serta distributor fashion. Cek bocor operasional gratis 30 menit.">
+<meta name="theme-color" content="#15201C">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sistemin — Dari buku tulis ke dashboard">
+<meta property="og:description" content="Sistem gudang & produksi untuk konveksi dan distributor fashion. Cek bocor operasional gratis 30 menit.">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15201C;--ink2:#222F2A;--line-dark:#34423D;--paper:#F2F4F3;--card:#FFFFFF;--line:#D5DCD9;--muted:#44524D;--muted-dark:#C9D2CE;--faint-dark:#9AA8A2;--accent:#C2410C;--accent-text:#B8430B;--accent-soft:#F6A272}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-text)}
+img,svg{display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.display{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:1px;color:var(--accent-text);margin:0 0 10px;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:6px;font-weight:600;font-size:17px;text-decoration:none;transition:filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--accent-soft);outline-offset:3px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-ghost{border:1px solid #4A5853;color:var(--paper)}
+.btn-dark{background:var(--ink);color:#fff}
+section{padding:72px 0}
+h2.display{font-size:clamp(28px,3.4vw,40px);margin-bottom:16px;max-width:780px}
+.lead{font-size:18px;color:var(--muted);max-width:680px;margin:0 0 40px}
+
+/* header + hero */
+.dark{background:var(--ink);color:var(--paper)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none;font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px}
+nav{display:flex;align-items:center;gap:22px;font-size:15px}
+nav a.link{color:var(--muted-dark);text-decoration:none}
+nav a.link:hover{color:#fff}
+nav .btn{min-height:44px;font-size:15px;padding:10px 16px}
+.hero .wrap{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:48px;padding-bottom:88px}
+.hero-copy{flex:1 1 480px;min-width:0}
+.hero h1{font-size:clamp(36px,5vw,60px);margin-bottom:20px}
+.hero .eyebrow{color:var(--accent-soft)}
+.hero p.sub{font-size:19px;color:var(--muted-dark);max-width:560px;margin:0 0 32px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .note{margin:24px 0 0;font-size:15px;color:var(--faint-dark)}
+.compare{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.before{background:var(--ink2);border:1px solid var(--line-dark);border-radius:10px;padding:20px}
+.before .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:#DCE3E0;padding:8px 0;border-bottom:1px dashed #4A5853}
+.before .row:last-child{border-bottom:0;padding-bottom:0}
+.before .row span:last-child{color:var(--accent-soft);text-align:right}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:13px;margin:0 0 8px;color:var(--faint-dark)}
+.after{background:var(--paper);color:var(--ink);border-radius:10px;padding:20px}
+.after .tag{color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kpi small{display:block;font-size:13px;color:var(--muted)}
+.kpi b{font-family:'Archivo',sans-serif;font-size:22px}
+.after .fine{margin:12px 0 0;font-size:13px;color:var(--muted)}
+
+/* cards */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px}
+.card h3{margin:0 0 8px;font-size:19px;font-weight:600}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.num{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--accent-text);margin-bottom:10px}
+.mod{background:var(--ink);color:var(--paper);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.mod h3{margin:0;font-family:'Archivo',sans-serif;font-size:22px}
+.mod p{margin:0;color:var(--muted-dark)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:3px solid var(--ink)}
+.step{padding:24px 24px 24px 0}
+.step .big{font-family:'Archivo',sans-serif;font-weight:800;font-size:40px;line-height:1;color:var(--accent)}
+.step h3{margin:12px 0 6px;font-size:19px;font-weight:600}
+.step p{margin:0;color:var(--muted)}
+
+/* pricing */
+.price{display:flex;flex-direction:column;gap:14px}
+.price .amt{font-family:'Archivo',sans-serif;font-weight:800;font-size:30px}
+.price .amt small{font-family:'IBM Plex Sans',sans-serif;font-weight:400;font-size:14px;color:var(--muted)}
+.price ul{margin:0;padding-left:20px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.price.featured{background:var(--ink);color:var(--paper);border:2px solid var(--accent)}
+.price.featured ul,.price.featured .amt small{color:var(--muted-dark)}
+.price .head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{background:var(--accent);color:#fff;font-size:13px;font-weight:600;padding:4px 10px;border-radius:99px}
+.fineprint{margin:20px 0 0;font-size:15px;color:var(--muted)}
+
+/* about */
+.about{background:#fff;border:1px solid var(--line);border-radius:14px;padding:40px;display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+.avatar{flex:0 0 180px;height:180px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:72px}
+.about-copy{flex:1 1 420px;min-width:0}
+.about-copy p{font-size:17px;color:var(--muted);margin:0 0 16px}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:8px}
+.stats b{display:block;font-family:'Archivo',sans-serif;font-size:30px}
+.stats span{font-size:14px;color:var(--muted)}
+
+/* faq */
+.faq{max-width:860px}
+details{border-bottom:1px solid #C2CBC7;padding:18px 0}
+details:first-of-type{border-top:1px solid #C2CBC7}
+summary{cursor:pointer;font-size:18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-family:'Archivo',sans-serif;font-size:24px;line-height:1;color:var(--accent)}
+details[open] summary::after{content:'–'}
+details p{margin:10px 0 0;color:var(--muted)}
+
+/* cta */
+.cta{background:var(--accent);color:#fff}
+.cta .wrap{display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
+.cta h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:12px}
+.cta p{margin:0;font-size:18px;color:#FFF1E8;max-width:620px}
+footer{background:var(--ink);color:var(--faint-dark);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:28px;padding-bottom:28px}
+footer a{color:var(--muted-dark)}
+
+/* floating WA (mobile) */
+.wa-float{display:none}
+@media (max-width:760px){
+  nav a.link{display:none}
+  section{padding:56px 0}
+  .about{padding:28px}
+  .avatar{flex-basis:120px;height:120px;font-size:48px}
+  .wa-float{display:inline-flex;position:fixed;right:16px;bottom:16px;z-index:10;box-shadow:0 6px 18px rgba(0,0,0,.25);border-radius:99px}
+  footer .wrap{padding-bottom:96px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="dark">
+<header>
+<div class="wrap">
+<a class="brand" href="#" aria-label="Sistemin, ke atas">
+<svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#C2410C"/><path d="M14 22h36M14 32h22M14 42h12" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M36 42l6 6 10-12" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+Sistemin</a>
+<nav aria-label="Menu utama">
+<a class="link" href="#modul">Modul</a>
+<a class="link" href="#cara">Cara kerja</a>
+<a class="link" href="#paket">Paket</a>
+<a class="link" href="#tentang">Tentang</a>
+<a class="btn btn-primary" href="https://wa.me/6282261612299?text=Halo%20Sistemin%2C%20saya%20mau%20CEK%20bocor%20operasional" target="_blank" rel="noopener">Cek bocor gratis</a>
+</nav>
+</div>
+</header>
+
+<div class="hero">
+<div class="wrap">
+<div class="hero-copy">
+<p class="eyebrow">Untuk konveksi &amp; distributor fashion</p>
+<h1 class="display">Dari buku tulis ke dashboard, tanpa ganti cara kerja tim Anda.</h1>
+<p class="sub">Saya praktisi gudang dan produksi yang membuatkan sistem berbasis web untuk stok, produksi, penjualan, dan gaji. Tim cukup input dari HP, Anda pantau semuanya dari satu layar.</p>
+<div class="ctas">
+<a class="btn btn-primary" href="https://wa.me/6282261612299?text=Halo%20Sistemin%2C%20saya%20mau%20CEK%20bocor%20operasional" target="_blank" rel="noopener">Jadwalkan cek bocor 30 menit</a>
+<a class="btn btn-ghost" href="#modul">Lihat modul</a>
+</div>
+<p class="note">Gratis, lewat video call atau kunjungan (area Bekasi). Tanpa kewajiban beli.</p>
+</div>
+<div class="compare" aria-label="Perbandingan sebelum dan sesudah memakai sistem">
+<div class="before">
+<p class="tag">SEBELUM</p>
+<div class="row"><span>Stok kain di buku</span><span>selisih saat opname</span></div>
+<div class="row"><span>Rekap PO dari chat WA</span><span>lembur tiap malam</span></div>
+<div class="row"><span>Setoran CMT</span><span>baru ketahuan telat</span></div>
+</div>
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+<div class="after">
+<p class="tag">SESUDAH</p>
+<div class="kpis">
+<div class="kpi"><small>Stok</small><b>Real-time</b></div>
+<div class="kpi"><small>Rekap PO</small><b>Otomatis</b></div>
+<div class="kpi"><small>CMT telat</small><b style="color:#C2410C">Alert</b></div>
+</div>
+<p class="fine">Ilustrasi. Hasil tiap usaha berbeda.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<main>
+<section aria-labelledby="h-masalah">
+<div class="wrap">
+<p class="eyebrow">Titik bocor yang sering saya temukan</p>
+<h2 id="h-masalah" class="display">Usaha jalan, omzet ada, tapi selalu ada uang yang hilang entah ke mana.</h2>
+<div class="grid" style="margin-top:32px">
+<div class="card"><div class="num">01</div><h3>Stok selalu selisih</h3><p>Angka di buku dan di rak tidak pernah sama. Opname jadi ajang saling tuduh.</p></div>
+<div class="card"><div class="num">02</div><h3>Produksi tidak terpantau</h3><p>Kain sudah keluar ke CMT, tapi hasil jadi dan sisa bahan tidak pernah dicatat rapi.</p></div>
+<div class="card"><div class="num">03</div><h3>Pesanan tercecer di chat</h3><p>Order reseller masuk lewat WA, direkap manual, dan sering ada yang terlewat.</p></div>
+<div class="card"><div class="num">04</div><h3>Gaji borongan bikin pusing</h3><p>Hitung absen dan hasil kerja freelance tiap minggu makan waktu setengah hari.</p></div>
+</div>
+</div>
+</section>
+
+<section id="modul" aria-labelledby="h-modul" style="padding-top:24px">
+<div class="wrap">
+<p class="eyebrow">Modul siap pakai</p>
+<h2 id="h-modul" class="display">Mulai dari satu modul, sambungkan saat siap.</h2>
+<p class="lead">Setiap modul sudah pernah saya bangun untuk usaha nyata, lalu disesuaikan dengan alur kerja Anda. Bukan dibuat dari nol, jadi lebih cepat dan lebih hemat.</p>
+<div class="grid">
+<div class="mod">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F6A272" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-5 9 5v10H3z"/><path d="M8 19v-6h8v6"/></svg>
+<h3>Gudang &amp; stok</h3><p>Kartu stok digital, barang masuk-keluar, opname dari HP, laporan selisih otomatis.</p></div>
+<div class="mod">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F6A272" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg>
+<h3>Produksi &amp; CMT</h3><p>Pemakaian bahan, surat jalan ke penjahit, setoran hasil, dan sisa kain per order.</p></div>
+<div class="mod">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F6A272" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8"/></svg>
+<h3>Penjualan agen &amp; reseller</h3><p>Chat WhatsApp jadi pesanan, rekap PO otomatis, tagihan dan status kirim per reseller.</p></div>
+<div class="mod">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F6A272" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+<h3>Absensi &amp; gaji freelance</h3><p>Absen, hasil borongan, dan slip gaji mingguan dihitung otomatis.</p></div>
+</div>
+</div>
+</section>
+
+<section id="cara" aria-labelledby="h-cara">
+<div class="wrap">
+<p class="eyebrow">Cara kerja</p>
+<h2 id="h-cara" class="display">Empat langkah, tim Anda tidak perlu belajar dari nol.</h2>
+<div class="steps" style="margin-top:32px">
+<div class="step"><div class="big">1</div><h3>Cek bocor</h3><p>Saya lihat alur kerja Anda langsung dan tandai titik yang paling sering bocor.</p></div>
+<div class="step"><div class="big">2</div><h3>Peta sistem</h3><p>Anda terima peta alur dan usulan modul, lengkap dengan harga yang jelas.</p></div>
+<div class="step"><div class="big">3</div><h3>Pasang &amp; latih</h3><p>Sistem dipasang, data awal dipindahkan, dan tim dilatih sampai lancar.</p></div>
+<div class="step"><div class="big">4</div><h3>Dampingi</h3><p>Saya pantau sebulan pertama, lalu lanjut perawatan bulanan bila Anda mau.</p></div>
+</div>
+</div>
+</section>
+
+<section id="paket" aria-labelledby="h-paket">
+<div class="wrap">
+<p class="eyebrow">Paket</p>
+<h2 id="h-paket" class="display">Harga jelas di depan. Tidak ada biaya kejutan.</h2>
+<div class="grid" style="margin-top:32px;align-items:stretch">
+<div class="card price"><h3>Cek bocor operasional</h3><div class="amt">Gratis</div><ul><li>Sesi 30 menit</li><li>Peta alur kerja</li><li>Daftar titik bocor</li></ul></div>
+<div class="card price"><h3>Satu modul</h3><div class="amt"><small>mulai </small>Rp 3 jt</div><ul><li>Pilih 1 modul</li><li>Disesuaikan alur Anda</li><li>Pelatihan tim</li><li>Garansi perbaikan 30 hari</li></ul></div>
+<div class="card price featured"><div class="head"><h3>Sistem lengkap</h3><span class="pill">Paling lengkap</span></div><div class="amt"><small>mulai </small>Rp 12 jt</div><ul><li>3–4 modul tersambung</li><li>Dashboard pemilik</li><li>Pindah data awal</li><li>Pendampingan 1 bulan</li></ul></div>
+<div class="card price"><h3>Perawatan bulanan</h3><div class="amt"><small>mulai </small>Rp 300 rb<small>/bln</small></div><ul><li>Perbaikan &amp; backup</li><li>Tambah laporan</li><li>Bantuan via WhatsApp</li></ul></div>
+</div>
+<p class="fineprint">Harga akhir tergantung jumlah pengguna dan penyesuaian. Semua tertulis sebelum pekerjaan dimulai.</p>
+</div>
+</section>
+
+<section id="tentang" aria-labelledby="h-tentang">
+<div class="wrap">
+<div class="about">
+<div class="avatar" aria-hidden="true">A</div>
+<div class="about-copy">
+<p class="eyebrow">Siapa yang membuatkan</p>
+<h2 id="h-tentang" class="display" style="font-size:clamp(26px,3vw,36px)">Praktisi produksi yang bisa bikin sistem, bukan programmer yang belajar produksi.</h2>
+<p>Saya Anjar. Lebih dari 8 tahun saya mengurus gudang dan produksi fashion, dari warehouse manager sampai kepala produksi. Saya tahu rasanya stok selisih saat opname dan CMT yang telat setor, karena saya mengalaminya sendiri.</p>
+<p>Sistem yang sudah saya bangun antara lain penjualan dan gudang untuk brand activewear, ERP konveksi tas, rekap pesanan agen fashion, dan gaji freelance.</p>
+<div class="stats">
+<div><b>8+ th</b><span>gudang &amp; produksi</span></div>
+<div><b>5</b><span>sistem sudah dibangun</span></div>
+<div><b>8 sesi</b><span>mentoring konveksi tas</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="h-faq">
+<div class="wrap faq">
+<p class="eyebrow">Pertanyaan umum</p>
+<h2 id="h-faq" class="display">Yang biasanya ditanyakan pemilik usaha.</h2>
+<div style="margin-top:24px">
+<details><summary>Tim saya gaptek, bisa pakai?</summary><p>Bisa. Tampilannya dibuat seperti formulir sederhana di HP, dan saya latih langsung sampai lancar.</p></details>
+<details><summary>Perlu beli komputer atau server?</summary><p>Tidak. Sistem berjalan di browser HP atau laptop yang sudah ada, dan datanya tersimpan di akun Google milik Anda sendiri.</p></details>
+<details><summary>Berapa lama sampai bisa dipakai?</summary><p>Satu modul biasanya 1–3 minggu, tergantung kerapian data awal dan penyesuaian yang diminta.</p></details>
+<details><summary>Kalau nanti ada yang error?</summary><p>Ada garansi perbaikan 30 hari. Setelah itu bisa lanjut paket perawatan bulanan.</p></details>
+</div>
+</div>
+</section>
+</main>
+
+<section class="cta" id="kontak" aria-labelledby="h-kontak">
+<div class="wrap">
+<div style="flex:1 1 520px;min-width:0">
+<h2 id="h-kontak" class="display">Temukan titik bocor operasional Anda minggu ini.</h2>
+<p>Chat “CEK” ke WhatsApp, saya jadwalkan sesi gratis 30 menit. Slot terbatas karena saya tangani sendiri.</p>
+</div>
+<a class="btn btn-dark" href="https://wa.me/6282261612299?text=Halo%20Sistemin%2C%20saya%20mau%20CEK%20bocor%20operasional" target="_blank" rel="noopener">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
+Chat WhatsApp 0822-6161-2299</a>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<span>© 2026 Sistemin · Sistem operasional untuk konveksi &amp; distributor fashion</span>
+<span>Bekasi · <a href="https://wa.me/6282261612299" target="_blank" rel="noopener">WA 0822-6161-2299</a></span>
+</div>
+</footer>
+
+<a class="btn btn-primary wa-float" href="https://wa.me/6282261612299?text=Halo%20Sistemin%2C%20saya%20mau%20CEK%20bocor%20operasional" target="_blank" rel="noopener" aria-label="Chat WhatsApp Sistemin">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
+Chat CEK</a>
+
+</body>
+</html>
