@@ -101,6 +101,11 @@ nav .btn{min-height:44px;font-size:15px;padding:10px 16px}
 .stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:8px}
 .stats b{display:block;font-family:'Archivo',sans-serif;font-size:30px}
 .stats span{font-size:14px;color:var(--muted)}
+.avatar-img{flex:0 0 180px;width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:50% 40%;display:block}
+.field{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px}
+.field figure{margin:0}
+.field img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;background:#E1E6E4}
+.field figcaption{margin-top:8px;font-size:14px;color:var(--muted)}
 
 /* faq */
 .faq{max-width:860px}
@@ -166,6 +171,7 @@ footer a{color:var(--muted-dark)}
   section{padding:56px 0}
   .about{padding:28px}
   .avatar{flex-basis:120px;height:120px;font-size:48px}
+  .avatar-img{flex-basis:120px;width:120px;height:120px}
   .wa-float{display:inline-flex;position:fixed;right:16px;bottom:16px;z-index:10;box-shadow:0 6px 18px rgba(0,0,0,.25);border-radius:99px}
   footer .wrap{padding-bottom:96px}
 }
@@ -392,18 +398,23 @@ Sistemin</a>
 <section id="tentang" aria-labelledby="h-tentang">
 <div class="wrap">
 <div class="about">
-<div class="avatar" aria-hidden="true">A</div>
+<img class="avatar-img" src="anjar-profil.jpg" alt="Anjar Ginanjar Saputra saat menjadi pembicara" width="180" height="180" loading="lazy">
 <div class="about-copy">
 <p class="eyebrow">Siapa yang membuatkan</p>
 <h2 id="h-tentang" class="display" style="font-size:clamp(26px,3vw,36px)">Praktisi produksi yang bisa bikin sistem, bukan programmer yang belajar produksi.</h2>
 <p>Saya Anjar. Lebih dari 8 tahun saya mengurus gudang dan produksi fashion, dari warehouse manager sampai kepala produksi. Saya tahu rasanya stok selisih saat opname dan CMT yang telat setor, karena saya mengalaminya sendiri.</p>
-<p>Sistem yang sudah saya bangun antara lain penjualan dan gudang untuk brand activewear, ERP konveksi tas, rekap pesanan agen fashion, dan gaji freelance.</p>
+<p>Sistem yang sudah saya bangun antara lain penjualan dan gudang untuk brand activewear, ERP konveksi tas, rekap pesanan agen fashion, dan gaji freelance. Saya juga aktif sebagai mentor bisnis untuk komunitas agen dan reseller fashion.</p>
 <div class="stats">
 <div><b>8+ th</b><span>gudang &amp; produksi</span></div>
 <div><b>5</b><span>sistem sudah dibangun</span></div>
 <div><b>8 sesi</b><span>mentoring konveksi tas</span></div>
 </div>
 </div>
+</div>
+<div class="field">
+<figure><img src="lapangan-garmen.jpg" alt="Anjar memantau barisan mesin jahit di lantai produksi garmen" width="900" height="675" loading="lazy"><figcaption>Memantau langsung di lantai produksi garmen</figcaption></figure>
+<figure><img src="interaksi-peserta.jpg" alt="Anjar berdiskusi dengan peserta acara komunitas fashion" width="900" height="675" loading="lazy"><figcaption>Berdiskusi dengan agen dan reseller fashion</figcaption></figure>
+<figure><img src="kelas-bisnis.jpg" alt="Anjar mengisi kelas bisnis di depan ratusan peserta" width="900" height="675" loading="lazy"><figcaption>Mengisi kelas bisnis komunitas fashion</figcaption></figure>
 </div>
 </div>
 </section>
