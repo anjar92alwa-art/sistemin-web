@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rapor Bocor — Sistemin</title>
+<meta name="description" content="Cek kondisi gudang, produksi, dan penjualan usaha Anda dalam 3 menit. Hasil rapor merah-kuning-hijau dan saran langkah langsung muncul.">
+<meta name="theme-color" content="#15201C">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rapor Bocor — cek operasional usaha Anda dalam 3 menit">
+<meta property="og:description" content="Jawab sekitar 15 pertanyaan, langsung dapat rapor merah-kuning-hijau dan langkah yang harus dilakukan.">
+<meta property="og:image" content="https://sistemin-web.vercel.app/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15201C;--paper:#F2F4F3;--line:#D5DCD9;--muted:#44524D;--accent:#C2410C;--accent-text:#B8430B;--red:#B42318;--red-bg:#FDE4E1;--yel:#8A5A00;--yel-bg:#FDF0C8;--grn:#166534;--grn-bg:#DCF2E5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-text)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.display{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:0}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--accent-text);margin:0 0 8px}
+header{background:var(--ink);color:var(--paper)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;padding-bottom:16px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none;font-family:'Archivo',sans-serif;font-weight:800;font-size:20px}
+.hero{background:var(--ink);color:var(--paper);padding:20px 0 48px}
+.hero h1{font-size:clamp(32px,6vw,46px);margin-bottom:14px}
+.hero p{color:#C9D2CE;font-size:18px;margin:0}
+.hero .eyebrow{color:#F6A272}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{border:1px solid #4A5853;border-radius:99px;padding:4px 12px;font-size:14px;color:#DCE3E0}
+.progress{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.progress .wrap{display:flex;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px;font-size:14px;color:var(--muted)}
+.bar{flex:1;height:8px;border-radius:4px;background:#DCE3E0;overflow:hidden}
+.bar b{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+section.block{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}
+section.block h2{font-family:'Archivo',sans-serif;font-size:22px;margin:0 0 4px;letter-spacing:-.3px}
+section.block .hint{margin:0 0 16px;color:var(--muted);font-size:15px}
+.field{margin:0 0 16px}
+.field label.lbl, fieldset legend{display:block;font-weight:600;margin-bottom:8px;font-size:16px;padding:0}
+input[type=text],input[type=tel]{width:100%;font:inherit;padding:12px 14px;border:1px solid #AAB6B1;border-radius:8px;background:#fff;min-height:48px}
+input[type=text]:focus,input[type=tel]:focus{outline:3px solid #F6A272;outline-offset:1px;border-color:var(--accent)}
+fieldset{border:0;margin:0 0 20px;padding:0}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.row{flex-direction:row;flex-wrap:wrap}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opt span{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 14px;border:1px solid #AAB6B1;border-radius:8px;background:#fff;font-size:15px}
+.opt span::before{content:'';flex:0 0 18px;height:18px;border-radius:50%;border:2px solid #8A9893;background:#fff}
+.opt input:checked + span{border-color:var(--accent);background:#FFF4EE}
+.opt input:checked + span::before{border-color:var(--accent);background:radial-gradient(circle,var(--accent) 45%,#fff 50%)}
+.opt input:focus-visible + span{outline:3px solid #F6A272;outline-offset:1px}
+.err{display:none;color:var(--red);font-size:14px;margin-top:6px}
+.invalid .err{display:block}
+.invalid input[type=text],.invalid input[type=tel]{border-color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 24px;border-radius:8px;border:0;font:inherit;font-weight:600;font-size:17px;text-decoration:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid #AAB6B1}
+.submit{margin:8px 0 48px;display:flex;flex-direction:column;gap:10px}
+.submit .err{text-align:center}
+.privacy{font-size:13px;color:var(--muted);text-align:center;margin:0}
+/* hasil */
+#hasil{display:none;padding:28px 0 56px}
+#hasil.show{display:block}
+.score{background:var(--ink);color:var(--paper);border-radius:14px;padding:28px;display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+.score .num{font-family:'Archivo',sans-serif;font-weight:800;font-size:72px;line-height:1}
+.score .num small{font-size:24px;color:#9AA8A2}
+.score .txt{flex:1 1 280px}
+.score .txt h2{font-family:'Archivo',sans-serif;font-size:26px;margin:0 0 6px}
+.score .txt p{margin:0;color:#C9D2CE}
+.pill{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.p-merah{background:var(--red-bg);color:var(--red)}
+.p-kuning{background:var(--yel-bg);color:var(--yel)}
+.p-hijau{background:var(--grn-bg);color:var(--grn)}
+.rapor{background:#fff;border:1px solid var(--line);border-radius:12px;margin:20px 0;overflow:hidden}
+.rapor h3,.prio h3{font-family:'Archivo',sans-serif;font-size:20px;margin:0;padding:18px 20px;border-bottom:1px solid var(--line)}
+.rrow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:12px 20px;border-bottom:1px solid #E7ECEA}
+.rrow:last-child{border-bottom:0}
+.rrow .meter{grid-column:1 / -1;height:6px;border-radius:3px;background:#E7ECEA;overflow:hidden}
+.rrow .meter b{display:block;height:100%}
+.m-merah{background:#D92D20}.m-kuning{background:#E0A100}.m-hijau{background:#1F9D6B}
+.rrow.skip{color:#8A9893}
+.prio{display:flex;flex-direction:column;gap:12px;margin:20px 0}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.pcard h4{margin:0;font-size:18px}
+.pcard p{margin:6px 0 0;color:var(--muted)}
+.pcard p b{color:var(--ink)}
+.cta{background:var(--accent);color:#fff;border-radius:14px;padding:24px;margin-top:24px}
+.cta h3{font-family:'Archivo',sans-serif;font-size:24px;margin:0 0 6px}
+.cta p{margin:0 0 16px;color:#FFF1E8}
+.cta .btns{display:flex;flex-wrap:wrap;gap:10px}
+.note{font-size:13px;color:var(--muted);margin-top:14px}
+footer{background:var(--ink);color:#9AA8A2;font-size:14px}
+footer .wrap{padding-top:22px;padding-bottom:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+footer a{color:#C9D2CE}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a class="brand" href="./" aria-label="Kembali ke halaman utama Sistemin">
+<svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#C2410C"/><path d="M14 22h36M14 32h22M14 42h12" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M36 42l6 6 10-12" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+Sistemin</a>
+<a href="./" style="color:#C9D2CE;font-size:15px">Halaman utama</a>
+</div>
+</header>
+
+<div class="hero">
+<div class="wrap">
+<p class="eyebrow">Gratis · 3 menit</p>
+<h1 class="display">Rapor Bocor</h1>
+<p>Jawab sekitar 15 pertanyaan singkat tentang gudang, produksi, dan penjualan Anda. Hasilnya langsung keluar: rapor merah-kuning-hijau, 3 titik bocor terbesar, dan langkah yang bisa Anda mulai besok.</p>
+<div class="chips"><span>Bahan masuk</span><span>Gudang</span><span>Potong</span><span>CMT</span><span>QC</span><span>Penjualan</span><span>Uang &amp; gaji</span><span>Pantauan owner</span></div>
+</div>
+</div>
+
+<div class="progress" id="progress" aria-hidden="true">
+<div class="wrap"><div class="bar"><b id="barFill"></b></div><span id="barText">0 dari 0</span></div>
+</div>
+
+<main class="wrap">
+<form id="form" novalidate>
+<section class="block" aria-labelledby="h-profil">
+<p class="eyebrow">Langkah 1</p>
+<h2 id="h-profil">Tentang usaha Anda</h2>
+<p class="hint">Supaya sarannya sesuai dengan jenis usaha Anda.</p>
+<div class="field" data-req="nama">
+<label class="lbl" for="nama">Nama Anda</label>
+<input type="text" id="nama" name="nama" autocomplete="name">
+<p class="err">Isi nama Anda dulu.</p>
+</div>
+<div class="field" data-req="usaha">
+<label class="lbl" for="usaha">Nama usaha</label>
+<input type="text" id="usaha" name="usaha" autocomplete="organization">
+<p class="err">Isi nama usaha dulu.</p>
+</div>
+<div class="field" data-req="wa">
+<label class="lbl" for="wa">Nomor WhatsApp</label>
+<input type="tel" id="wa" name="wa" inputmode="tel" autocomplete="tel" placeholder="08xx xxxx xxxx">
+<p class="err">Isi nomor WhatsApp yang aktif (minimal 10 angka).</p>
+</div>
+<div id="profilQs"></div>
+</section>
+
+<div id="titikQs"></div>
+
+<div class="submit">
+<button type="submit" class="btn btn-primary">Lihat hasil Rapor Bocor</button>
+<p class="err" id="formErr">Masih ada pertanyaan yang belum dijawab. Bagian yang ditandai merah perlu diisi.</p>
+<p class="privacy">Jawaban Anda hanya dipakai Sistemin untuk menyusun rapor ini dan menghubungi Anda soal hasilnya.</p>
+</div>
+</form>
+
+<div id="hasil" aria-live="polite"></div>
+</main>
+
+<footer>
+<div class="wrap">
+<span>© 2026 Sistemin · Rapor Bocor</span>
+<span><a href="./">sistemin-web.vercel.app</a></span>
+</div>
+</footer>
+
+<script>
+const WA_NUMBER = '6282261612299';
+const ENDPOINT = ''; // URL Web App Apps Script, diisi setelah deploy
+
+const PROFIL = [
+  {id: 'jenis', q: 'Jenis usaha', opts: ['Konveksi / pabrik', 'Brand fashion / online shop', 'Agen / distributor', 'Lainnya']},
+  {id: 'produksi', q: 'Bagaimana barang Anda diproduksi?', opts: ['Produksi sendiri', 'Lewat CMT / penjahit luar', 'Sendiri dan lewat CMT', 'Tidak produksi (beli barang jadi)']},
+  {id: 'orang', q: 'Berapa orang yang terlibat di gudang, produksi, dan admin?', opts: ['1–5 orang', '6–20 orang', '21–50 orang', 'Lebih dari 50 orang']}
+];
+
+const TITIK = [
+  {id: 't1', nama: 'Bahan / barang masuk', modul: 'Gudang & stok', prod: false,
+   solusi: 'Tanda terima digital: setiap barang datang dicatat dari HP dan dicocokkan dengan surat jalan supplier.',
+   besok: 'Setiap barang datang, hitung ulang dan foto surat jalannya sebelum ditandatangani.',
+   qs: [
+    {q: 'Saat bahan atau barang datang dari supplier, bagaimana dicatat?', o: ['Tidak dicatat, atau notanya disimpan saja', 'Dicatat di buku atau Excel, tapi jumlahnya tidak dicek', 'Dicatat dan jumlahnya dicocokkan dengan surat jalan']},
+    {q: 'Siapa yang menerima dan mengecek barang datang?', o: ['Siapa saja yang sedang ada', 'Ada orang khusus, tapi tanpa bukti terima', 'Ada orang khusus dan selalu ada tanda terima']}
+   ]},
+  {id: 't2', nama: 'Gudang & stok', modul: 'Gudang & stok', prod: false,
+   solusi: 'Kartu stok digital, opname dari HP, dan laporan selisih otomatis setiap bulan.',
+   besok: 'Pilih 10 barang paling laris, hitung fisiknya minggu ini, lalu bandingkan dengan catatan.',
+   qs: [
+    {q: 'Kapan terakhir stok dihitung fisik (opname)?', o: ['Belum pernah atau sudah lupa', 'Lebih dari 3 bulan lalu', 'Rutin setiap bulan atau lebih sering']},
+    {q: 'Kalau jumlah di catatan dan di rak berbeda, apa yang terjadi?', o: ['Tidak tahu ada selisih atau tidak', 'Tahu ada selisih, tapi tidak tahu sebabnya', 'Selisihnya kecil dan sebabnya jelas']}
+   ]},
+  {id: 't3', nama: 'Potong & pemakaian bahan', modul: 'Produksi & CMT', prod: true,
+   solusi: 'Pemakaian bahan dicatat per order, termasuk sisa kain yang kembali ke gudang.',
+   besok: 'Tulis di SPK berapa bahan yang dikeluarkan dan berapa sisa yang dikembalikan.',
+   qs: [
+    {q: 'Pemakaian bahan untuk setiap order dicatat?', o: ['Tidak dicatat', 'Dikira-kira saja', 'Dicatat per order, termasuk sisa bahannya']}
+   ]},
+  {id: 't4', nama: 'Jahit / CMT', modul: 'Produksi & CMT', prod: true,
+   solusi: 'Surat jalan digital ke penjahit atau CMT, jadwal setor, dan pengingat saat setoran telat.',
+   besok: 'Buat satu daftar setoran: tanggal kirim, jumlah potongan, dan tanggal janji setor.',
+   qs: [
+    {q: 'Bahan atau potongan yang dikirim ke penjahit atau CMT dicatat?', o: ['Tidak ada catatan', 'Dicatat di buku atau chat', 'Ada surat jalan dan dicek lagi saat barang kembali']},
+    {q: 'Bagaimana Anda tahu penjahit atau CMT telat setor?', o: ['Baru tahu saat pembeli menanyakan', 'Mengecek manual sesekali', 'Ada jadwal setor yang selalu dipantau']}
+   ]},
+  {id: 't5', nama: 'Barang jadi & QC', modul: 'Produksi & CMT', prod: true,
+   solusi: 'Hasil dihitung per setoran, reject yang diperbaiki dan yang dibuang dicatat terpisah.',
+   besok: 'Pisahkan tumpukan reject yang diperbaiki dan yang dibuang, lalu hitung setiap hari.',
+   qs: [
+    {q: 'Hasil jahitan dihitung dan dicek sebelum masuk gudang?', o: ['Tidak dihitung', 'Dihitung, tapi reject tidak dicatat', 'Dihitung, dan reject diperbaiki atau dibuang dicatat']}
+   ]},
+  {id: 't6', nama: 'Penjualan & pengiriman', modul: 'Penjualan agen & reseller', prod: false,
+   solusi: 'Pesanan dari chat langsung masuk rekap per PO dan per reseller, lengkap dengan status kirim.',
+   besok: 'Kumpulkan semua pesanan di satu tempat. Jangan biarkan tersebar di banyak chat.',
+   qs: [
+    {q: 'Pesanan pembeli atau reseller direkap di mana?', o: ['Tidak direkap, langsung dari chat', 'Direkap manual di buku atau Excel', 'Di aplikasi atau sistem']},
+    {q: 'Berapa lama waktu untuk merekap pesanan setiap hari?', o: ['Lebih dari 2 jam', '30 menit sampai 2 jam', 'Kurang dari 30 menit']},
+    {q: 'Bulan lalu, berapa kali ada pesanan terlewat atau salah kirim?', o: ['Sering, lebih dari 5 kali', 'Kadang, 1 sampai 5 kali', 'Hampir tidak pernah']}
+   ]},
+  {id: 't7', nama: 'Uang & gaji', modul: 'Penjualan + gaji freelance', prod: false,
+   solusi: 'Tagihan per pelanggan tercatat rapi, dan gaji borongan dihitung otomatis dari data kerja.',
+   besok: 'Buat daftar siapa saja yang belum bayar, lalu cek setiap Senin pagi.',
+   qs: [
+    {q: 'Tagihan dan pembayaran pelanggan atau reseller dicatat?', o: ['Dari ingatan atau chat saja', 'Di buku atau Excel, tapi sering telat dicek', 'Tercatat, kapan saja tahu siapa yang belum bayar']},
+    {q: 'Gaji borongan atau freelance dihitung dari mana?', o: ['Dari ingatan atau kertas lepas', 'Dari Excel manual setiap minggu', 'Dari data absen dan hasil kerja yang tercatat', 'Tidak ada karyawan borongan atau freelance'], skipLast: true}
+   ]},
+  {id: 't8', nama: 'Pantauan owner', modul: 'Dashboard pemilik', prod: false,
+   solusi: 'Dashboard owner: stok, progres produksi, dan pesanan bisa dilihat dari HP kapan saja.',
+   besok: 'Tentukan 3 angka yang ingin Anda lihat setiap pagi, lalu minta admin mengirimkannya.',
+   qs: [
+    {q: 'Kalau ingin tahu stok atau progres hari ini, berapa lama sampai dapat jawaban?', o: ['Harus tanya sana-sini, lebih dari 1 jam', 'Beberapa menit mencari catatan', 'Langsung lihat sendiri di HP']}
+   ]}
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+
+function radioGroup(name, legend, opts, extra) {
+  return `<fieldset class="field" data-req="${name}"${extra || ''}><legend>${esc(legend)}</legend><div class="opts">` +
+    opts.map((o, i) => `<label class="opt"><input type="radio" name="${name}" value="${i}"><span>${esc(o)}</span></label>`).join('') +
+    `</div><p class="err">Pilih salah satu jawaban.</p></fieldset>`;
+}
+
+$('#profilQs').innerHTML = PROFIL.map(p => radioGroup(p.id, p.q, p.opts)).join('');
+let n = 0;
+$('#titikQs').innerHTML = TITIK.map(t => `<section class="block" data-titik="${t.id}"${t.prod ? ' data-prod="1"' : ''}>
+  <p class="eyebrow">${t.prod ? 'Khusus yang produksi' : 'Titik'} · ${esc(t.nama)}</p><h2>${esc(t.nama)}</h2>
+  <p class="hint">Pilih jawaban yang paling mendekati kondisi sekarang, bukan kondisi ideal.</p>
+  ${t.qs.map((q, i) => radioGroup(`${t.id}_${i}`, `${++n}. ${q.q}`, q.o)).join('')}</section>`).join('');
+
+const noProd = () => document.querySelector('input[name=produksi]:checked')?.value === '3';
+function applyProd() {
+  document.querySelectorAll('[data-prod]').forEach(s => { s.hidden = noProd(); });
+  updateBar();
+}
+function requiredGroups() {
+  return [...document.querySelectorAll('#form [data-req]')].filter(el => !el.closest('[hidden]'));
+}
+function isFilled(el) {
+  const k = el.dataset.req, input = el.querySelector('input');
+  if (input.type === 'radio') return !!el.querySelector('input:checked');
+  if (k === 'wa') return input.value.replace(/\D/g, '').length >= 10;
+  return input.value.trim().length > 0;
+}
+function updateBar() {
+  const g = requiredGroups(), done = g.filter(isFilled).length;
+  $('#barFill').style.width = (g.length ? done / g.length * 100 : 0) + '%';
+  $('#barText').textContent = `${done} dari ${g.length}`;
+}
+$('#form').addEventListener('input', e => {
+  const f = e.target.closest('[data-req]');
+  if (f && isFilled(f)) f.classList.remove('invalid');
+  if (!requiredGroups().some(g => g.classList.contains('invalid'))) $('#formErr').style.display = 'none';
+  if (e.target.name === 'produksi') applyProd(); else updateBar();
+});
+applyProd();
+
+function colorOf(v) { return v < 0.4 ? 'merah' : v < 0.75 ? 'kuning' : 'hijau'; }
+const LABEL = {merah: 'Bocor', kuning: 'Rawan', hijau: 'Aman'};
+
+function compute() {
+  const ans = k => { const c = document.querySelector(`input[name="${k}"]:checked`); return c ? +c.value : null; };
+  const rows = TITIK.map(t => {
+    if (t.prod && noProd()) return {...t, skip: true};
+    const vals = t.qs.map((q, i) => { const v = ans(`${t.id}_${i}`); return (q.skipLast && v === q.o.length - 1) ? null : v; }).filter(v => v !== null);
+    if (!vals.length) return {...t, skip: true};
+    const s = vals.reduce((a, b) => a + b, 0) / (vals.length * 2);
+    return {...t, s, c: colorOf(s)};
+  });
+  const used = rows.filter(r => !r.skip);
+  const total = Math.round(used.reduce((a, r) => a + r.s, 0) / used.length * 100);
+  const prio = used.filter(r => r.c !== 'hijau').sort((a, b) => a.s - b.s).slice(0, 3);
+  return {rows, total, prio};
+}
+
+function headline(total) {
+  if (total < 40) return ['Banyak titik bocor', 'Hampir semua catatan masih bergantung pada ingatan dan chat. Kabar baiknya, perbaikan di titik paling merah biasanya langsung terasa dalam sebulan.'];
+  if (total < 70) return ['Sebagian sudah rapi, sebagian bocor', 'Dasarnya sudah ada, tapi beberapa titik masih rawan selisih dan memakan waktu. Fokus dulu ke 3 titik di bawah.'];
+  return ['Operasional sudah cukup rapi', 'Sebagian besar titik sudah tercatat dan dicek. Sistem membantu Anda menghemat waktu dan memantau semuanya dari HP.'];
+}
+
+function render(r) {
+  const [h, p] = headline(r.total);
+  const prof = PROFIL.map(x => x.opts[+document.querySelector(`input[name="${x.id}"]:checked`).value]);
+  const rowsHtml = r.rows.map(x => x.skip
+    ? `<div class="rrow skip"><span>${esc(x.nama)}</span><span class="pill" style="background:#EEF1F0;color:#5F6B66">Tidak dinilai</span></div>`
+    : `<div class="rrow"><span>${esc(x.nama)}</span><span class="pill p-${x.c}">${LABEL[x.c]}</span><div class="meter"><b class="m-${x.c}" style="width:${Math.max(6, Math.round(x.s * 100))}%"></b></div></div>`).join('');
+  const prioHtml = r.prio.length ? r.prio.map((x, i) => `<article class="pcard"><div class="top"><h4>${i + 1}. ${esc(x.nama)}</h4><span class="pill p-${x.c}">${LABEL[x.c]}</span></div>
+      <p><b>Mulai besok, tanpa biaya:</b> ${esc(x.besok)}</p>
+      <p><b>Solusi sistem:</b> ${esc(x.solusi)} <span style="white-space:nowrap">(Modul ${esc(x.modul)})</span></p></article>`).join('')
+    : `<article class="pcard"><h4>Tidak ada titik merah atau kuning</h4><p>Pertahankan kebiasaan yang sudah berjalan. Sistem bisa membantu menghemat waktu rekap dan memberi pantauan langsung dari HP.</p></article>`;
+  $('#hasil').innerHTML = `
+    <p class="eyebrow">Hasil Rapor Bocor · ${esc($('#usaha').value.trim())}</p>
+    <div class="score"><div class="num">${r.total}<small>/100</small></div><div class="txt"><h2>${esc(h)}</h2><p>${esc(p)}</p></div></div>
+    <div class="rapor"><h3>Rapor per titik</h3>${rowsHtml}</div>
+    <div class="prio"><h3 style="padding:0;border:0;font-family:'Archivo',sans-serif;font-size:22px;margin:8px 0 0">${r.prio.length ? r.prio.length + ' titik yang perlu dibereskan dulu' : 'Langkah berikutnya'}</h3>${prioHtml}</div>
+    <div class="cta"><h3>Mau dibantu membereskannya?</h3>
+      <p>Kirim hasil ini ke WhatsApp Sistemin. Saya jadwalkan sesi cek bocor gratis 30 menit untuk membahas hasil Anda.</p>
+      <div class="btns"><a class="btn btn-dark" id="waBtn" target="_blank" rel="noopener">Kirim hasil ke WhatsApp</a>
+      <button type="button" class="btn btn-ghost" id="ulang">Isi ulang</button></div></div>
+    <p class="note">Rapor ini gambaran awal dari jawaban Anda sendiri. Hasil pastinya dilihat saat sesi cek bocor bersama alur kerja nyata.</p>`;
+  const merah = r.rows.filter(x => !x.skip && x.c === 'merah').map(x => x.nama);
+  const msg = `Halo Sistemin, saya ${$('#nama').value.trim()} dari ${$('#usaha').value.trim()} (${prof[0]}).\nHasil Rapor Bocor saya: ${r.total}/100.\n` +
+    (merah.length ? `Titik bocor: ${merah.join(', ')}.\n` : '') + `Saya mau jadwalkan sesi cek bocor gratis.`;
+  $('#waBtn').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  $('#ulang').addEventListener('click', () => { $('#hasil').classList.remove('show'); $('#form').hidden = false; $('#progress').hidden = false; window.scrollTo({top: 0}); });
+  $('#form').hidden = true; $('#progress').hidden = true;
+  $('#hasil').classList.add('show');
+  window.scrollTo({top: $('#hasil').offsetTop - 10});
+  return {prof};
+}
+
+function send(r, prof) {
+  if (!ENDPOINT) return;
+  const answers = {};
+  document.querySelectorAll('#form input[type=radio]:checked').forEach(i => { answers[i.name] = +i.value; });
+  const payload = {nama: $('#nama').value.trim(), usaha: $('#usaha').value.trim(), wa: $('#wa').value.trim(),
+    jenis: prof[0], produksi: prof[1], orang: prof[2], skor: r.total,
+    titik: Object.fromEntries(r.rows.map(x => [x.nama, x.skip ? 'Tidak dinilai' : LABEL[x.c] + ' (' + Math.round(x.s * 100) + ')'])),
+    prioritas: r.prio.map(x => x.nama).join(', '), jawaban: answers, halaman: location.href};
+  try { fetch(ENDPOINT, {method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(payload)}); } catch (e) {}
+}
+
+$('#form').addEventListener('submit', e => {
+  e.preventDefault();
+  const missing = requiredGroups().filter(g => !isFilled(g));
+  requiredGroups().forEach(g => g.classList.toggle('invalid', !isFilled(g)));
+  if (missing.length) {
+    $('#formErr').style.display = 'block';
+    missing[0].scrollIntoView({behavior: 'smooth', block: 'center'});
+    const f = missing[0].querySelector('input'); if (f) setTimeout(() => f.focus({preventScroll: true}), 300);
+    return;
+  }
+  const r = compute();
+  const {prof} = render(r);
+  send(r, prof);
+});
+</script>
+</body>
+</html>
