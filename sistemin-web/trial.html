@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coba Gratis 14 Hari — Sistemin</title>
+<meta name="description" content="Pilih aplikasi Sistemin yang ingin dicoba: gudang, produksi, penjualan, HRD, R&D, atau Rekapin. Gratis 14 hari dengan data usaha Anda sendiri.">
+<meta name="theme-color" content="#15201C">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coba aplikasi Sistemin gratis 14 hari">
+<meta property="og:description" content="Pilih aplikasi yang ingin dicoba. Akses dikirim lewat WhatsApp.">
+<meta property="og:image" content="https://sistemin-web.vercel.app/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15201C;--paper:#F2F4F3;--line:#D5DCD9;--muted:#44524D;--accent:#C2410C;--accent-text:#B8430B;--red:#B42318;--grn:#166534;--grn-bg:#DCF2E5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-text)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.display{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:0}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--accent-text);margin:0 0 8px}
+header{background:var(--ink);color:var(--paper)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;padding-bottom:16px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none;font-family:'Archivo',sans-serif;font-weight:800;font-size:20px}
+.hero{background:var(--ink);color:var(--paper);padding:20px 0 44px}
+.hero h1{font-size:clamp(30px,6vw,44px);margin-bottom:14px}
+.hero p{color:#C9D2CE;font-size:18px;margin:0}
+.hero .eyebrow{color:#F6A272}
+.steps{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
+.steps li{border:1px solid #4A5853;border-radius:99px;padding:4px 12px;font-size:14px;color:#DCE3E0}
+section.block{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}
+section.block h2{font-family:'Archivo',sans-serif;font-size:22px;margin:0 0 4px;letter-spacing:-.3px}
+section.block .hint{margin:0 0 16px;color:var(--muted);font-size:15px}
+.apps{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.app{position:relative}
+.app input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:1}
+.app .card{display:flex;gap:12px;height:100%;padding:14px;border:1px solid #AAB6B1;border-radius:10px;background:#fff}
+.app .box{flex:0 0 20px;height:20px;border-radius:5px;border:2px solid #8A9893;margin-top:2px;display:flex;align-items:center;justify-content:center}
+.app h3{margin:0;font-size:16px;font-weight:600}
+.app p{margin:2px 0 0;font-size:14px;color:var(--muted);line-height:1.45}
+.app .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--accent-text);background:#FFF4EE;border-radius:99px;padding:1px 8px;margin-top:6px}
+.app input:checked + .card{border-color:var(--accent);background:#FFF8F4;box-shadow:inset 0 0 0 1px var(--accent)}
+.app input:checked + .card .box{background:var(--accent);border-color:var(--accent)}
+.app input:checked + .card .box::after{content:'';width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.app input:focus-visible + .card{outline:3px solid #F6A272;outline-offset:1px}
+.field{margin:0 0 16px}
+.field label{display:block;font-weight:600;margin-bottom:6px;font-size:16px}
+.field label small{font-weight:400;color:var(--muted)}
+input[type=text],input[type=tel],input[type=email],select,textarea{width:100%;font:inherit;padding:12px 14px;border:1px solid #AAB6B1;border-radius:8px;background:#fff;min-height:48px;color:var(--ink)}
+textarea{min-height:84px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid #F6A272;outline-offset:1px;border-color:var(--accent)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.err{display:none;color:var(--red);font-size:14px;margin-top:6px}
+.invalid .err{display:block}
+.invalid input{border-color:var(--red)}
+.invalid .card{border-color:var(--red)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 24px;border-radius:8px;border:0;font:inherit;font-weight:600;font-size:17px;text-decoration:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:disabled{opacity:.65;cursor:wait}
+.btn-wa{background:#15803D;color:#fff}
+.submit{margin:8px 0 20px;display:flex;flex-direction:column;gap:10px}
+.notice{border-radius:10px;padding:14px 16px;font-size:15px;display:none}
+.notice.show{display:block}
+.notice.bad{background:#FDE4E1;color:var(--red)}
+.privacy{font-size:13px;color:var(--muted);text-align:center;margin:0 0 48px}
+#selesai{display:none;padding:28px 0 64px}
+#selesai.show{display:block}
+.done{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px}
+.done .ok{width:48px;height:48px;border-radius:50%;background:var(--grn-bg);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.done h2{font-family:'Archivo',sans-serif;font-size:26px;margin:0 0 6px}
+.done ol{padding-left:20px;margin:16px 0 20px}
+.done li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);padding:20px 0 32px;font-size:14px;color:var(--muted)}
+@media (max-width:620px){.apps,.two{grid-template-columns:1fr}section.block{padding:20px 16px}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<a class="brand" href="./" aria-label="Kembali ke halaman utama Sistemin">
+<svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#C2410C"/><path d="M14 22h36M14 32h22M14 42h12" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M36 42l6 6 10-12" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+Sistemin</a>
+<a href="./" style="color:#C9D2CE;font-size:15px">Halaman utama</a>
+</div>
+</header>
+
+<main id="formulir">
+<div class="hero">
+<div class="wrap">
+<p class="eyebrow">Coba gratis 14 hari</p>
+<h1 class="display">Pilih aplikasi yang ingin Anda coba.</h1>
+<p>Pakai dengan data usaha Anda sendiri. Kalau cocok dan lanjut berlangganan, semua data selama trial tetap tersimpan.</p>
+<ol class="steps">
+<li>1. Isi formulir</li><li>2. Kami cek &amp; setujui</li><li>3. Akses dikirim lewat WhatsApp</li>
+</ol>
+</div>
+</div>
+
+<div class="wrap">
+<form id="f" novalidate>
+<section class="block" id="sApps">
+<h2>Aplikasi yang ingin dicoba</h2>
+<p class="hint">Boleh pilih lebih dari satu. Modul lain tetap bisa ditambahkan kapan saja.</p>
+<div class="apps">
+<label class="app"><input type="checkbox" name="modul" value="gudang"><span class="card"><span class="box"></span><span><h3>Gudang</h3><p>Barang masuk-keluar, stok real-time, opname dari HP.</p></span></span></label>
+<label class="app"><input type="checkbox" name="modul" value="produksi"><span class="card"><span class="box"></span><span><h3>Produksi</h3><p>PO, kebutuhan bahan, SPK, progres per bagian, QC.</p></span></span></label>
+<label class="app"><input type="checkbox" name="modul" value="penjualan"><span class="card"><span class="box"></span><span><h3>Penjualan</h3><p>Harga bertingkat, penjualan per saluran, laba kotor.</p></span></span></label>
+<label class="app"><input type="checkbox" name="modul" value="hrd"><span class="card"><span class="box"></span><span><h3>HRD &amp; Gaji</h3><p>Absensi, hasil borongan, slip gaji mingguan.</p></span></span></label>
+<label class="app"><input type="checkbox" name="modul" value="rnd"><span class="card"><span class="box"></span><span><h3>R&amp;D / Sampel</h3><p>Daftar sampel, biaya sampel, status ACC buyer.</p></span></span></label>
+<label class="app"><input type="checkbox" name="modul" value="rekapin"><span class="card"><span class="box"></span><span><h3>Rekapin</h3><p>Chat WhatsApp jadi pesanan, rekap PO per reseller.</p><span class="tag">Untuk agen &amp; reseller</span></span></span></label>
+</div>
+<p class="err" id="eApps">Pilih minimal satu aplikasi.</p>
+</section>
+
+<section class="block">
+<h2>Data usaha</h2>
+<p class="hint">Akses trial dikirim ke nomor WhatsApp ini.</p>
+<div class="two">
+<div class="field" id="fNama"><label for="nama">Nama Anda</label><input type="text" id="nama" autocomplete="name" maxlength="80"><p class="err">Nama wajib diisi.</p></div>
+<div class="field" id="fUsaha"><label for="usaha">Nama usaha</label><input type="text" id="usaha" autocomplete="organization" maxlength="80"><p class="err">Nama usaha wajib diisi.</p></div>
+<div class="field" id="fWa"><label for="wa">Nomor WhatsApp</label><input type="tel" id="wa" autocomplete="tel" inputmode="tel" placeholder="0812xxxxxxx" maxlength="20"><p class="err">Nomor WhatsApp tidak valid. Contoh: 0812xxxxxxx</p></div>
+<div class="field" id="fEmail"><label for="email">Email <small>(opsional)</small></label><input type="email" id="email" autocomplete="email" maxlength="100"><p class="err">Alamat email tidak valid.</p></div>
+</div>
+<div class="field"><label for="jenis">Jenis usaha</label>
+<select id="jenis"><option value="">Pilih...</option><option>Konveksi / pabrik</option><option>Brand fashion</option><option>Agen / distributor</option><option>Online shop</option><option>Lainnya</option></select></div>
+<div class="field"><label for="catatan">Yang paling ingin dibenahi <small>(opsional)</small></label><textarea id="catatan" maxlength="300" placeholder="Contoh: stok sering selisih, susah pantau progres jahit"></textarea></div>
+<div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
+</section>
+
+<div class="submit">
+<div class="notice bad" id="gagal" role="alert"></div>
+<button class="btn btn-primary" id="kirim" type="submit">Kirim permintaan trial</button>
+</div>
+<p class="privacy">Data hanya dipakai untuk menyiapkan akses trial dan menghubungi Anda. Tidak dibagikan ke pihak lain.</p>
+</form>
+</div>
+</main>
+
+<div id="selesai" class="wrap" aria-live="polite">
+<div class="done">
+<div class="ok"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></div>
+<h2>Permintaan terkirim</h2>
+<p id="pesanSelesai">Terima kasih! Permintaan trial sudah kami terima.</p>
+<ol>
+<li>Kami cek permintaan Anda, biasanya di hari yang sama.</li>
+<li>Akses (link, kode usaha, username, kata sandi) dikirim lewat WhatsApp.</li>
+<li>Masuk, isi data awal, dan pakai selama 14 hari. Kami bantu lewat sesi singkat 30 menit.</li>
+</ol>
+<a class="btn btn-wa" id="waSelesai" href="https://wa.me/6282261612299" target="_blank" rel="noopener">Chat Sistemin sekarang</a>
+</div>
+</div>
+
+<footer><div class="wrap">Sistemin · WA 0822 6161 2299 · <a href="rapor">Belum yakin mulai dari mana? Cek Rapor Bocor</a></div></footer>
+
+<script>
+(function () {
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwD97mfyTA9LXeKf9JOQ_Xr5QntC-XXCL4VqINM4O_zI1G3fiWjz6hR7DjU0Im39woB/exec';
+  var WA = '6282261612299';
+  var NAMA_APP = { gudang: 'Gudang', produksi: 'Produksi', penjualan: 'Penjualan', hrd: 'HRD & Gaji', rnd: 'R&D / Sampel', rekapin: 'Rekapin' };
+  var f = document.getElementById('f');
+  function $(id) { return document.getElementById(id); }
+  function boxes() { return Array.prototype.slice.call(document.querySelectorAll('input[name=modul]')); }
+  function dipilih() { return boxes().filter(function (b) { return b.checked; }).map(function (b) { return b.value; }); }
+  function normWa(v) { var w = String(v || '').replace(/\D/g, ''); if (w.indexOf('62') === 0) w = '0' + w.slice(2); else if (w.indexOf('8') === 0) w = '0' + w; return w; }
+
+  // ?app=gudang,produksi → langsung tercentang
+  try {
+    var q = new URLSearchParams(location.search).get('app');
+    if (q) q.split(',').forEach(function (a) { var b = document.querySelector('input[name=modul][value="' + a.trim() + '"]'); if (b) b.checked = true; });
+  } catch (e) { }
+
+  function tandai(id, salah) { $(id).classList.toggle('invalid', salah); return salah; }
+  ['nama', 'usaha', 'wa', 'email'].forEach(function (id) {
+    $(id).addEventListener('input', function () { $('f' + id.charAt(0).toUpperCase() + id.slice(1)).classList.remove('invalid'); });
+  });
+  boxes().forEach(function (b) { b.addEventListener('change', function () { $('sApps').classList.remove('invalid'); $('eApps').style.display = ''; }); });
+
+  function pesanWa(d) {
+    return 'Halo Sistemin, saya mau coba trial.\nNama: ' + d.nama + '\nUsaha: ' + d.usaha + '\nAplikasi: ' + d.modul.map(function (m) { return NAMA_APP[m]; }).join(', ');
+  }
+
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    $('gagal').classList.remove('show');
+    var d = {
+      aksi: 'daftarTrial', nama: $('nama').value.trim(), usaha: $('usaha').value.trim(), wa: normWa($('wa').value),
+      email: $('email').value.trim(), jenis: $('jenis').value, catatan: $('catatan').value.trim(), modul: dipilih(),
+      website: $('website').value, sumber: 'website/trial'
+    };
+    var salah = false, pertama = null;
+    if (!d.modul.length) { $('sApps').classList.add('invalid'); $('eApps').style.display = 'block'; salah = true; pertama = pertama || $('sApps'); }
+    if (tandai('fNama', !d.nama)) { salah = true; pertama = pertama || $('nama'); }
+    if (tandai('fUsaha', !d.usaha)) { salah = true; pertama = pertama || $('usaha'); }
+    if (tandai('fWa', !/^08\d{8,12}$/.test(d.wa))) { salah = true; pertama = pertama || $('wa'); }
+    if (tandai('fEmail', !!d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email))) { salah = true; pertama = pertama || $('email'); }
+    if (salah) { pertama.scrollIntoView({ behavior: 'smooth', block: 'center' }); if (pertama.focus) pertama.focus({ preventScroll: true }); return; }
+
+    var btn = $('kirim');
+    btn.disabled = true; btn.textContent = 'Mengirim...';
+    var waLink = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(pesanWa(d));
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d) })
+      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.pesan || 'Gagal mengirim.');
+        if (r.pesan) $('pesanSelesai').textContent = r.pesan;
+        $('waSelesai').href = waLink;
+        $('formulir').style.display = 'none';
+        $('selesai').classList.add('show');
+        window.scrollTo(0, 0);
+      })
+      .catch(function (e) {
+        btn.disabled = false; btn.textContent = 'Kirim permintaan trial';
+        var g = $('gagal');
+        g.innerHTML = '';
+        g.appendChild(document.createTextNode((e && e.message && e.message !== 'Failed to fetch' ? e.message : 'Permintaan belum terkirim karena koneksi bermasalah.') + ' '));
+        var a = document.createElement('a'); a.href = waLink; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Kirim lewat WhatsApp saja';
+        g.appendChild(a);
+        g.classList.add('show');
+      });
+  });
+})();
+</script>
+</body>
+</html>
