@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rapor Bocor — Sistemin</title>
+<title>Rapor Bocor — Sistemkan</title>
 <meta name="description" content="Cek kondisi gudang, produksi, dan penjualan usaha Anda dalam 3 menit. Hasil rapor merah-kuning-hijau dan saran langkah langsung muncul.">
 <meta name="theme-color" content="#15201C">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -103,9 +103,9 @@ footer a{color:#C9D2CE}
 
 <header>
 <div class="wrap">
-<a class="brand" href="./" aria-label="Kembali ke halaman utama Sistemin">
+<a class="brand" href="./" aria-label="Kembali ke halaman utama Sistemkan">
 <svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#C2410C"/><path d="M14 22h36M14 32h22M14 42h12" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M36 42l6 6 10-12" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-Sistemin</a>
+Sistemkan</a>
 <a href="./" style="color:#C9D2CE;font-size:15px">Halaman utama</a>
 </div>
 </header>
@@ -152,7 +152,7 @@ Sistemin</a>
 <div class="submit">
 <button type="submit" class="btn btn-primary">Lihat hasil Rapor Bocor</button>
 <p class="err" id="formErr">Masih ada pertanyaan yang belum dijawab. Bagian yang ditandai merah perlu diisi.</p>
-<p class="privacy">Jawaban Anda hanya dipakai Sistemin untuk menyusun rapor ini dan menghubungi Anda soal hasilnya.</p>
+<p class="privacy">Jawaban Anda hanya dipakai Sistemkan untuk menyusun rapor ini dan menghubungi Anda soal hasilnya.</p>
 </div>
 </form>
 
@@ -161,7 +161,7 @@ Sistemin</a>
 
 <footer>
 <div class="wrap">
-<span>© 2026 Sistemin · Rapor Bocor</span>
+<span>© 2026 Sistemkan · Rapor Bocor</span>
 <span><a href="./">sistemin-web.vercel.app</a></span>
 </div>
 </footer>
@@ -316,12 +316,12 @@ function render(r) {
     <div class="rapor"><h3>Rapor per titik</h3>${rowsHtml}</div>
     <div class="prio"><h3 style="padding:0;border:0;font-family:'Archivo',sans-serif;font-size:22px;margin:8px 0 0">${r.prio.length ? r.prio.length + ' titik yang perlu dibereskan dulu' : 'Langkah berikutnya'}</h3>${prioHtml}</div>
     <div class="cta"><h3>Mau dibantu membereskannya?</h3>
-      <p>Kirim hasil ini ke WhatsApp Sistemin. Saya jadwalkan sesi cek bocor gratis 30 menit untuk membahas hasil Anda.</p>
+      <p>Kirim hasil ini ke WhatsApp Sistemkan. Saya jadwalkan sesi cek bocor gratis 30 menit untuk membahas hasil Anda.</p>
       <div class="btns"><a class="btn btn-dark" id="waBtn" target="_blank" rel="noopener">Kirim hasil ke WhatsApp</a>
       <button type="button" class="btn btn-ghost" id="ulang">Isi ulang</button></div></div>
     <p class="note">Rapor ini gambaran awal dari jawaban Anda sendiri. Hasil pastinya dilihat saat sesi cek bocor bersama alur kerja nyata.</p>`;
   const merah = r.rows.filter(x => !x.skip && x.c === 'merah').map(x => x.nama);
-  const msg = `Halo Sistemin, saya ${$('#nama').value.trim()} dari ${$('#usaha').value.trim()} (${prof[0]}).\nHasil Rapor Bocor saya: ${r.total}/100.\n` +
+  const msg = `Halo Sistemkan, saya ${$('#nama').value.trim()} dari ${$('#usaha').value.trim()} (${prof[0]}).\nHasil Rapor Bocor saya: ${r.total}/100.\n` +
     (merah.length ? `Titik bocor: ${merah.join(', ')}.\n` : '') + `Saya mau jadwalkan sesi cek bocor gratis.`;
   $('#waBtn').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
   $('#ulang').addEventListener('click', () => { $('#hasil').classList.remove('show'); $('#form').hidden = false; $('#progress').hidden = false; window.scrollTo({top: 0}); });
