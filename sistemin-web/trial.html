@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coba Gratis 14 Hari — Sistemin</title>
-<meta name="description" content="Pilih aplikasi Sistemin yang ingin dicoba: gudang, produksi, penjualan, HRD, R&D, atau Rekapin. Gratis 14 hari dengan data usaha Anda sendiri.">
+<title>Coba Gratis 14 Hari — Sistemkan</title>
+<meta name="description" content="Pilih aplikasi Sistemkan yang ingin dicoba: gudang, produksi, penjualan, HRD, R&D, atau Rekapin. Gratis 14 hari dengan data usaha Anda sendiri.">
 <meta name="theme-color" content="#15201C">
 <link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Coba aplikasi Sistemin gratis 14 hari">
+<meta property="og:title" content="Coba aplikasi Sistemkan gratis 14 hari">
 <meta property="og:description" content="Pilih aplikasi yang ingin dicoba. Akses dikirim lewat WhatsApp.">
 <meta property="og:image" content="https://sistemin-web.vercel.app/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,9 +81,9 @@ footer{border-top:1px solid var(--line);padding:20px 0 32px;font-size:14px;color
 <body>
 <header>
 <div class="wrap">
-<a class="brand" href="./" aria-label="Kembali ke halaman utama Sistemin">
+<a class="brand" href="./" aria-label="Kembali ke halaman utama Sistemkan">
 <svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#C2410C"/><path d="M14 22h36M14 32h22M14 42h12" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M36 42l6 6 10-12" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-Sistemin</a>
+Sistemkan</a>
 <a href="./" style="color:#C9D2CE;font-size:15px">Halaman utama</a>
 </div>
 </header>
@@ -150,11 +150,11 @@ Sistemin</a>
 <li>Akses (link, kode usaha, username, kata sandi) dikirim lewat WhatsApp.</li>
 <li>Masuk, isi data awal, dan pakai selama 14 hari. Kami bantu lewat sesi singkat 30 menit.</li>
 </ol>
-<a class="btn btn-wa" id="waSelesai" href="https://wa.me/6282261612299" target="_blank" rel="noopener">Chat Sistemin sekarang</a>
+<a class="btn btn-wa" id="waSelesai" href="https://wa.me/6282261612299" target="_blank" rel="noopener">Chat Sistemkan sekarang</a>
 </div>
 </div>
 
-<footer><div class="wrap">Sistemin · WA 0822 6161 2299 · <a href="rapor">Belum yakin mulai dari mana? Cek Rapor Bocor</a></div></footer>
+<footer><div class="wrap">Sistemkan · WA 0822 6161 2299 · <a href="rapor">Belum yakin mulai dari mana? Cek Rapor Bocor</a></div></footer>
 
 <script>
 (function () {
@@ -180,7 +180,7 @@ Sistemin</a>
   boxes().forEach(function (b) { b.addEventListener('change', function () { $('sApps').classList.remove('invalid'); $('eApps').style.display = ''; }); });
 
   function pesanWa(d) {
-    return 'Halo Sistemin, saya mau coba trial.\nNama: ' + d.nama + '\nUsaha: ' + d.usaha + '\nAplikasi: ' + d.modul.map(function (m) { return NAMA_APP[m]; }).join(', ');
+    return 'Halo Sistemkan, saya mau coba trial.\nNama: ' + d.nama + '\nUsaha: ' + d.usaha + '\nAplikasi: ' + d.modul.map(function (m) { return NAMA_APP[m]; }).join(', ');
   }
 
   f.addEventListener('submit', function (ev) {
